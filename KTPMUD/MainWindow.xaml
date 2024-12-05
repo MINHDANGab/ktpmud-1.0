@@ -1,0 +1,27 @@
+﻿<!-- View: MainWindow.xaml -->
+<Window x:Class="MVVMExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MVVM Example" Height="350" Width="525">
+    <Window.DataContext>
+        <!-- Liên kết ViewModel với Window -->
+        <local:MainViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <!-- ListBox hiển thị danh sách người dùng -->
+        <ListBox ItemsSource="{Binding Users}" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Age}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Button để thêm người dùng mới -->
+        <Button Content="Add User" Command="{Binding AddUserCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="30" Margin="220,10,0,0"/>
+    </Grid>
+</Window>
